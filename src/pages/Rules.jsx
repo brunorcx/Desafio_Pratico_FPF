@@ -6,8 +6,8 @@ import Footer from "components/Footer";
 const Rules = () => {
   return (
     <div>
-      Rules page
       <Navbar />
+      Rules page
       <Footer />
     </div>
   );

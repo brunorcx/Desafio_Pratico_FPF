@@ -6,8 +6,8 @@ import Footer from "components/Footer";
 const Ranking = () => {
   return (
     <div>
-      Ranking page
       <Navbar />
+      Ranking page
       <Footer />
     </div>
   );
