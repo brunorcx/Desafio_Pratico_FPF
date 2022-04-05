@@ -5,9 +5,6 @@ const Navbar = ({ openSideMenu, setOpenSideMenu }) => {
   return (
     <header className="App-header">
       <nav className="total-nav">
-        <div className="logo">
-          <img src="logo.png" alt="logo"></img>
-        </div>
         <menu>
           <div className="HamburgerMenu" onClick={() => setOpenSideMenu(!openSideMenu)}>
             <GiHamburgerMenu />

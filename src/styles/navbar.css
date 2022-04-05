@@ -7,17 +7,6 @@
   align-items: center;
   padding-left: 2%;
 }
-.total-nav .logo {
-  width: 10%;
-}
-@media only screen and (min-width: 320px) and (max-width: 601px) {
-  .total-nav .logo {
-    width: 40%;
-  }
-}
-.total-nav .logo img {
-  width: 70%;
-}
 .total-nav menu {
   list-style: none;
   width: 90%;
