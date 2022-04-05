@@ -1,0 +1,25 @@
+@import "colors.less";
+@import "mediaQuery.less";
+
+.game-container {
+  .enemy {
+    .lifebar-container {
+      width: 200px;
+      border: 1px solid @boder-black;
+      .lifebar-progress {
+        transition: 1s;
+        color: @font-white;
+        text-align: center;
+        width: 100%;
+        background: coral;
+      }
+    }
+    img {
+      transform: scaleX(-1);
+    }
+    progress {
+      animation: 1s;
+      transform: translateX(-100%);
+    }
+  }
+}

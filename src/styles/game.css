@@ -1,0 +1,18 @@
+.game-container .enemy .lifebar-container {
+  width: 200px;
+  border: 1px solid #000;
+}
+.game-container .enemy .lifebar-container .lifebar-progress {
+  transition: 1s;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  background: coral;
+}
+.game-container .enemy img {
+  transform: scaleX(-1);
+}
+.game-container .enemy progress {
+  animation: 1s;
+  transform: translateX(-100%);
+}
