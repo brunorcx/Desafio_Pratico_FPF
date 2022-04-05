@@ -1,0 +1,31 @@
+.rules-container h1 {
+  color: rgba(66, 74, 78, 0.8);
+  font-size: 2em;
+  text-align: center;
+}
+.rules-container p {
+  color: rgba(44, 49, 51, 0.932);
+  font-size: 1.2em;
+  text-align: center;
+}
+.rules-container .card-container {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+}
+.rules-container .center-card {
+  display: grid;
+  grid-template-columns: 0.7fr;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.rules-container .center-card p {
+  text-align: justify;
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .rules-container .center-card {
+    grid-template-columns: 0.9fr;
+  }
+}
