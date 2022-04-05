@@ -16,19 +16,58 @@
     display: grid;
     justify-content: center;
     width: 100%;
+    .center-card {
+      display: grid;
+      grid-template-columns: 0.7fr;
+      background: @background-card;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      p {
+        text-align: justify;
+      }
+      @media @phone {
+        grid-template-columns: 0.9fr;
+      }
+    }
   }
-  .center-card {
+  .actions-4-container {
     display: grid;
-    grid-template-columns: 0.7fr;
-    background: @background-card;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 2%;
+    gap: 7%;
+    color: @font-color;
+    h2 {
+      color: @font-color;
+      text-align: center;
+    }
     p {
       text-align: justify;
     }
+
+    .card-1 {
+      padding: 2%;
+      background: rgba(255, 0, 0, 0.637);
+    }
+    .card-2 {
+      padding: 2%;
+
+      background: rgba(255, 196, 0, 0.637);
+    }
+    .card-3 {
+      padding: 2%;
+
+      background: rgba(0, 255, 0, 0.493);
+    }
+    .card-4 {
+      padding: 2%;
+
+      background: rgba(0, 255, 255, 0.404);
+    }
     @media @phone {
-      grid-template-columns: 0.9fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
     }
   }
 }
