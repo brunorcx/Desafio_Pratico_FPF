@@ -1,0 +1,83 @@
+.total-home p {
+  color: rgba(44, 49, 51, 0.932);
+  font-size: 1.2em;
+  text-align: center;
+}
+.total-home .home-container {
+  color: #fff;
+  position: relative;
+  white-space: nowrap;
+}
+.total-home .home-container h1 {
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 1px 1px 1px black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  /* iOS */
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .total-home .home-container h1 {
+    font-size: 2.5rem;
+  }
+}
+.total-home .home-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 150vh;
+  -webkit-mask-image: linear-gradient(160deg, #000 60%, transparent 110%);
+  mask-image: linear-gradient(160deg, #000 60%, transparent 110%);
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .total-home .home-container img {
+    height: 100vh;
+    object-position: right right;
+  }
+}
+@media only screen and (min-width: 602px) and (max-width: 959px) {
+  .total-home .home-container img {
+    height: 150vh;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .total-home .home-container {
+    white-space: inherit;
+  }
+}
+@media only screen and (min-width: 602px) and (max-width: 959px) {
+  .total-home .home-container {
+    white-space: inherit;
+  }
+}
+.total-home > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.total-home > div h2 {
+  color: rgba(66, 74, 78, 0.8);
+}
+.total-home > div a {
+  text-decoration: none;
+  color: #424a4e;
+  background: transparent;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 2%;
+  padding: 1.2% 3%;
+  border: solid 1px #424a4e;
+  transition: 0.3s;
+}
+.total-home > div a:hover {
+  color: white;
+  background: #424a4e;
+  transition: 0.3s;
+  cursor: pointer;
+}

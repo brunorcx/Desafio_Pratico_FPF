@@ -1,0 +1,76 @@
+@import "colors.less";
+@import "mediaQuery.less";
+.total-home {
+  p {
+    color: @font-color-p;
+    font-size: 1.2em;
+    text-align: center;
+  }
+  .home-container {
+    color: @font-white;
+    position: relative;
+    white-space: nowrap;
+    h1 {
+      font-size: 4rem;
+      color: @font-white;
+      text-shadow: 1px 1px 1px black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%); /* iOS */
+      transform: translate(-50%, -50%);
+      width: 100%;
+      text-align: center;
+      @media @phone {
+        font-size: 2.5rem;
+      }
+    }
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 150vh;
+      -webkit-mask-image: linear-gradient(160deg, #000 60%, transparent 110%);
+      mask-image: linear-gradient(160deg, #000 60%, transparent 110%);
+      @media @phone {
+        height: 100vh;
+        object-position: right right;
+      }
+      @media @tablet {
+        height: 150vh;
+      }
+    }
+    @media @phone {
+      white-space: inherit;
+    }
+    @media @tablet {
+      white-space: inherit;
+    }
+  }
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+      color: @font-color;
+    }
+    a {
+      text-decoration: none;
+      color: @button-default;
+      background: transparent;
+      border-radius: 25px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 2%;
+      padding: 1.2% 3%;
+      border: solid 1px @button-default;
+      transition: 0.3s;
+      &:hover {
+        color: white;
+        background: @button-default;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+    }
+  }
+}
