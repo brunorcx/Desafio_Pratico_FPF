@@ -6,8 +6,8 @@ import Footer from "components/Footer";
 const Game = () => {
   return (
     <div>
-      Game page
       <Navbar />
+      Game page
       <Footer />
     </div>
   );

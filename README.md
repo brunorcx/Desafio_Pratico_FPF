@@ -1,3 +1,3 @@
 # Steps taken
 
-add jsonconfig.json for absolute imports
+[ x ] added jsonconfig.json for absolute imports

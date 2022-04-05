@@ -1,0 +1,34 @@
+@import "colors.less";
+@import "mediaQuery.less";
+
+.rules-container {
+  h1 {
+    color: @font-color;
+    font-size: 2em;
+    text-align: center;
+  }
+  p {
+    color: @font-color-p;
+    font-size: 1.2em;
+    text-align: center;
+  }
+  .card-container {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+  }
+  .center-card {
+    display: grid;
+    grid-template-columns: 0.7fr;
+    background: @background-card;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    p {
+      text-align: justify;
+    }
+    @media @phone {
+      grid-template-columns: 0.9fr;
+    }
+  }
+}
