@@ -49,6 +49,10 @@
   width: 80%;
   height: 80%;
   font-size: larger;
+  border-radius: 4%;
+}
+.game-container .player .player-controls-container button:hover {
+  cursor: pointer;
 }
 .game-container .player .player-controls-container :nth-child(1) {
   background: rgba(238, 105, 105, 0.7);
