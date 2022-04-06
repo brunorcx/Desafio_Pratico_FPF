@@ -39,9 +39,10 @@ const Game = () => {
 
   //Player actions
   useEffect(() => {
-    if (playerLife < 0) {
+    if (playerLife <= 0) {
       playerLifebarEl.current.style.width = "0%";
       setPlayerLife(0);
+      alert("Você perdeu!");
     } else if (playerLife > 100) {
       playerLifebarEl.current.style.width = "100%";
       setPlayerLife(100);
@@ -53,9 +54,10 @@ const Game = () => {
   //Enemy actions
   useEffect(() => {
     if (turns.current > 0) {
-      if (enemyLife < 0) {
+      if (enemyLife <= 0) {
         enemyLifebarEl.current.style.width = "0%";
         setEnemyLife(0);
+        alert("Você venceu!");
       } else {
         enemyLifebarEl.current.style.width = enemyLife + "%";
         setTimeout(() => {
