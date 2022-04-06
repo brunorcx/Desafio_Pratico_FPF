@@ -15,6 +15,10 @@ const Game = () => {
   function playerSpecialAttack(enemyLife) {
     setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
   }
+  function healPlayer(playerLife) {
+    setPlayerLife(playerLife + Math.floor(Math.random() * (15 - 5 + 1) + 5));
+  }
+
   useEffect(() => {
     if (enemyLife < 0) {
       enemyLifebarEl.current.style.width = "0%";
@@ -23,6 +27,18 @@ const Game = () => {
       enemyLifebarEl.current.style.width = enemyLife + "%";
     }
   }, [enemyLife]);
+
+  useEffect(() => {
+    if (playerLife < 0) {
+      playerLifebarEl.current.style.width = "0%";
+      setPlayerLife(0);
+    } else if (playerLife > 100) {
+      playerLifebarEl.current.style.width = "100%";
+      setPlayerLife(100);
+    } else {
+      playerLifebarEl.current.style.width = playerLife + "%";
+    }
+  }, [playerLife]);
 
   return (
     <div>
@@ -56,7 +72,9 @@ const Game = () => {
             <button className="special-attack" onClick={() => playerSpecialAttack(enemyLife)}>
               Ataque Especial
             </button>
-            <button className="heal">Curar</button>
+            <button className="heal" onClick={() => healPlayer(playerLife)}>
+              Curar
+            </button>
             <button className="give-up">Desistir</button>
           </div>
         </div>
