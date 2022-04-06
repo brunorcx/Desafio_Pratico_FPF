@@ -8,8 +8,10 @@ const Game = () => {
   const playerLifebarEl = useRef(null);
   const turns = useRef(0);
   const stun = useRef(false);
+  const wait2Turns = useRef(0);
   const [enemyLife, setEnemyLife] = useState(100);
   const [playerLife, setPlayerLife] = useState(100);
+  const [disableButon, setDisableButon] = useState(false);
 
   //Player actions
   function playerAttack(enemyLife) {
@@ -25,7 +27,9 @@ const Game = () => {
       if (Math.floor(Math.random() * 2) === 0) {
         stun.current = true;
       }
+      setDisableButon(true);
       turns.current++;
+      wait2Turns.current = turns.current;
     }, 500);
   }
   function healPlayer(playerLife) {
@@ -79,6 +83,9 @@ const Game = () => {
           }
         }, 500);
       }
+      if (turns.current === wait2Turns.current + 3) {
+        setDisableButon(false);
+      }
     }
   }, [enemyLife, turns.current]);
 
@@ -111,7 +118,11 @@ const Game = () => {
             <button className="attack" onClick={() => playerAttack(enemyLife)}>
               Atacar
             </button>
-            <button className="special-attack" onClick={() => playerSpecialAttack(enemyLife)}>
+            <button
+              className="special-attack"
+              onClick={() => playerSpecialAttack(enemyLife)}
+              disabled={disableButon}
+            >
               Ataque Especial
             </button>
             <button className="heal" onClick={() => healPlayer(playerLife)}>
