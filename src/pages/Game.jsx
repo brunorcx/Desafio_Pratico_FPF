@@ -39,15 +39,6 @@ const Game = () => {
 
   //Player actions
   useEffect(() => {
-    if (enemyLife < 0) {
-      enemyLifebarEl.current.style.width = "0%";
-      setEnemyLife(0);
-    } else if (enemyLife !== 100) {
-      enemyLifebarEl.current.style.width = enemyLife + "%";
-    }
-  }, [enemyLife]);
-
-  useEffect(() => {
     if (playerLife < 0) {
       playerLifebarEl.current.style.width = "0%";
       setPlayerLife(0);
@@ -61,14 +52,20 @@ const Game = () => {
 
   //Enemy actions
   useEffect(() => {
-    //wait one second before enemy attacks
-    //skip first render
     if (turns.current > 0) {
-      setTimeout(() => {
-        if (playerLife > 0) {
-          enemyAttack(playerLife);
-        }
-      }, 500);
+      if (enemyLife < 0) {
+        enemyLifebarEl.current.style.width = "0%";
+        setEnemyLife(0);
+      } else {
+        enemyLifebarEl.current.style.width = enemyLife + "%";
+        setTimeout(() => {
+          if (turns.current % 3 === 0) {
+            enemySpecialAttack(playerLife);
+          } else {
+            enemyAttack(playerLife);
+          }
+        }, 500);
+      }
     }
   }, [enemyLife, turns.current]);
 
