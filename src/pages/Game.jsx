@@ -12,16 +12,22 @@ const Game = () => {
 
   //Player actions
   function playerAttack(enemyLife) {
-    setEnemyLife(enemyLife - Math.floor(Math.random() * (10 - 5 + 1) + 5));
-    turns.current++;
+    setTimeout(() => {
+      setEnemyLife(enemyLife - Math.floor(Math.random() * (10 - 5 + 1) + 5));
+      turns.current++;
+    }, 500);
   }
   function playerSpecialAttack(enemyLife) {
-    setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
-    turns.current++;
+    setTimeout(() => {
+      setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
+      turns.current++;
+    }, 500);
   }
   function healPlayer(playerLife) {
-    setPlayerLife(playerLife + Math.floor(Math.random() * (15 - 5 + 1) + 5));
-    turns.current++;
+    setTimeout(() => {
+      setPlayerLife(playerLife + Math.floor(Math.random() * (15 - 5 + 1) + 5));
+      turns.current++;
+    }, 500);
   }
   //Enemy actions
   function enemyAttack(playerLife) {
@@ -62,7 +68,7 @@ const Game = () => {
         if (playerLife > 0) {
           enemyAttack(playerLife);
         }
-      }, 1000);
+      }, 500);
     }
   }, [enemyLife, turns.current]);
 
