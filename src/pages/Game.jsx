@@ -7,6 +7,7 @@ const Game = () => {
   const enemyLifebarEl = useRef(null);
   const playerLifebarEl = useRef(null);
   const turns = useRef(0);
+  const stun = useRef(false);
   const [enemyLife, setEnemyLife] = useState(100);
   const [playerLife, setPlayerLife] = useState(100);
 
@@ -20,6 +21,10 @@ const Game = () => {
   function playerSpecialAttack(enemyLife) {
     setTimeout(() => {
       setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
+      //50% chance to stun
+      if (Math.floor(Math.random() * 2) === 0) {
+        stun.current = true;
+      }
       turns.current++;
     }, 500);
   }
@@ -61,10 +66,16 @@ const Game = () => {
       } else {
         enemyLifebarEl.current.style.width = enemyLife + "%";
         setTimeout(() => {
-          if (turns.current % 3 === 0) {
-            enemySpecialAttack(playerLife);
+          if (stun.current) {
+            alert("Inimigo está atordoado e não consegue atacar!");
+            stun.current = false;
           } else {
-            enemyAttack(playerLife);
+            //Attack
+            if (turns.current % 3 === 0) {
+              enemySpecialAttack(playerLife);
+            } else {
+              enemyAttack(playerLife);
+            }
           }
         }, 500);
       }
