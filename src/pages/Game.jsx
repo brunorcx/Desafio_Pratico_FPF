@@ -12,8 +12,16 @@ const Game = () => {
   function playerAttack(enemyLife) {
     setEnemyLife(enemyLife - Math.floor(Math.random() * (10 - 5 + 1) + 5));
   }
+  function playerSpecialAttack(enemyLife) {
+    setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
+  }
   useEffect(() => {
-    enemyLifebarEl.current.style.width = enemyLife + "%";
+    if (enemyLife < 0) {
+      enemyLifebarEl.current.style.width = "0%";
+      setEnemyLife(0);
+    } else {
+      enemyLifebarEl.current.style.width = enemyLife + "%";
+    }
   }, [enemyLife]);
 
   return (
@@ -31,11 +39,6 @@ const Game = () => {
             alt="monstro de quatro patas inimigo"
             title="Manveru, Dorimen at https://opengameart.org/content/dorver-monster"
           ></img>
-          <button
-            onClick={() => {
-              enemyLifebarEl.current.style.width = "50%";
-            }}
-          ></button>
         </div>
         <div className="player">
           <div className="player-info">
@@ -50,7 +53,9 @@ const Game = () => {
             <button className="attack" onClick={() => playerAttack(enemyLife)}>
               Atacar
             </button>
-            <button className="special-attack">Ataque Especial</button>
+            <button className="special-attack" onClick={() => playerSpecialAttack(enemyLife)}>
+              Ataque Especial
+            </button>
             <button className="heal">Curar</button>
             <button className="give-up">Desistir</button>
           </div>
