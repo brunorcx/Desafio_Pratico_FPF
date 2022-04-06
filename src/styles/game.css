@@ -1,18 +1,67 @@
-.game-container .enemy .lifebar-container {
-  width: 200px;
+.game-container {
   border: 1px solid #000;
 }
-.game-container .enemy .lifebar-container .lifebar-progress {
+.game-container .lifebar-container {
+  width: 200px;
+  border: 1px solid #000;
+  margin-bottom: 1%;
+}
+.game-container .lifebar-container .lifebar-progress {
   transition: 1s;
   color: #fff;
   text-align: center;
   width: 100%;
   background: coral;
 }
+.game-container .enemy {
+  display: grid;
+  justify-items: end;
+  margin-right: 2%;
+}
 .game-container .enemy img {
   transform: scaleX(-1);
 }
-.game-container .enemy progress {
-  animation: 1s;
-  transform: translateX(-100%);
+.game-container .player {
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 0.3fr 0.7fr;
+}
+.game-container .player .player-info {
+  display: grid;
+  justify-items: center;
+}
+.game-container .player .player-info .lifebar-container {
+  margin-bottom: 0%;
+}
+.game-container .player .player-info .lifebar-container .lifebar-progress {
+  background: #0a49be;
+}
+.game-container .player .player-controls-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.3fr 0.3fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  justify-content: end;
+}
+.game-container .player .player-controls-container button {
+  width: 80%;
+  height: 80%;
+  font-size: larger;
+}
+.game-container .player .player-controls-container :nth-child(1) {
+  background: rgba(238, 105, 105, 0.7);
+}
+.game-container .player .player-controls-container :nth-child(2) {
+  background: rgba(229, 238, 105, 0.7);
+}
+.game-container .player .player-controls-container :nth-child(3) {
+  background: rgba(105, 238, 105, 0.7);
+}
+.game-container .player .player-controls-container :nth-child(4) {
+  background: rgba(105, 105, 238, 0.7);
+}
+.game-container .player img {
+  width: 240px;
 }
