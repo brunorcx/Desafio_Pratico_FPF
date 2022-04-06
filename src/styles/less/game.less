@@ -1,0 +1,76 @@
+@import "colors.less";
+@import "mediaQuery.less";
+
+.game-container {
+  border: 1px solid @boder-black;
+  .lifebar-container {
+    width: 200px;
+    border: 1px solid @boder-black;
+    margin-bottom: 1%;
+    .lifebar-progress {
+      transition: 1s;
+      color: @font-white;
+      text-align: center;
+      width: 100%;
+      background: coral;
+    }
+  }
+  .enemy {
+    display: grid;
+    justify-items: end;
+    margin-right: 2%;
+    img {
+      transform: scaleX(-1);
+    }
+  }
+  .player {
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 0.3fr 0.7fr;
+    .player-info {
+      display: grid;
+      justify-items: center;
+      .lifebar-container {
+        margin-bottom: 0%;
+
+        .lifebar-progress {
+          background: @player-lifebar;
+        }
+      }
+    }
+    .player-controls-container {
+      //grid with 2 columns and 2 rows centralize the controls
+      width: 100%;
+      display: grid;
+      grid-template-columns: 0.3fr 0.3fr; //Set a fixed width
+      grid-template-rows: 1fr 1fr;
+      align-items: center;
+      justify-items: center;
+      justify-content: end;
+      button {
+        width: 80%;
+        height: 80%;
+        font-size: larger;
+        border-radius: 4%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      :nth-child(1) {
+        background: @player-attack;
+      }
+      :nth-child(2) {
+        background: @player-special-attack;
+      }
+      :nth-child(3) {
+        background: @player-heal;
+      }
+      :nth-child(4) {
+        background: @player-give-up;
+      }
+    }
+    img {
+      width: 240px;
+    }
+  }
+}
