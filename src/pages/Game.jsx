@@ -171,7 +171,9 @@ const Game = () => {
           </div>
         </div>
         <div className="game-log">
-          <div className="turns"></div>
+          <div className="turns">
+            <span>Turno: {turns.current}</span>
+          </div>
         </div>
       </main>
       <Footer />
