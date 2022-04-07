@@ -97,6 +97,7 @@
   border-radius: 5px;
   width: 90%;
   font-size: 1.5rem;
+  padding: 1%;
 }
 .game-container .game-log .card-container .center-card :nth-child(1) {
   text-align: left;
