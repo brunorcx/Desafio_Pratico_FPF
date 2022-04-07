@@ -17,7 +17,8 @@ const Game = () => {
   const playerLifebarEl = useRef(null);
   const [playerLife, setPlayerLife] = useState(100);
   const playerAttackType = useRef("");
-  const [disableButon, setDisableButon] = useState(false);
+  const [disableSpecialAttack, setDisableSpecialAttack] = useState(false);
+  const [disableButons, setDisableButons] = useState(false);
   const wait2Turns = useRef(0);
   const playerDamage = useRef(0);
   //Enemy behavior
@@ -44,7 +45,7 @@ const Game = () => {
       if (Math.floor(Math.random() * 2) === 0) {
         stun.current = true;
       }
-      setDisableButon(true);
+      setDisableSpecialAttack(true);
       turns.current++;
       wait2Turns.current = turns.current;
       playerAttackType.current = "Ataque Especial";
@@ -78,6 +79,7 @@ const Game = () => {
       toast.error("Você perdeu!", {
         id: "lost",
       });
+      setDisableButons(true);
     } else if (playerLife > 100) {
       playerLifebarEl.current.style.width = "100%";
       setPlayerLife(100);
@@ -102,6 +104,7 @@ const Game = () => {
         toast.success("Você venceu!", {
           id: "victory",
         });
+        setDisableButons(true);
       } else {
         if (enemyLife < 20) {
           enemyLifebarEl.current.style.background = Colors.attack;
@@ -131,7 +134,7 @@ const Game = () => {
         }, 500);
       }
       if (turns.current === wait2Turns.current + 3) {
-        setDisableButon(false);
+        setDisableSpecialAttack(false);
       }
     }
   }, [enemyLife, turns.current]);
@@ -216,28 +219,29 @@ const Game = () => {
             <img src="sprites/knight/knight-idle.gif" alt="jogador"></img>
           </div>
           <div className="player-controls-container">
-            <button className="attack" onClick={() => playerAttack(enemyLife)}>
+            <button className="attack" onClick={() => playerAttack(enemyLife)} disabled={disableButons}>
               Atacar
             </button>
             <button
               className="special-attack"
               onClick={() => playerSpecialAttack(enemyLife)}
-              disabled={disableButon}
+              disabled={disableButons ? disableButons : disableSpecialAttack}
             >
               Ataque Especial
             </button>
-            <button className="heal" onClick={() => healPlayer(playerLife)}>
+            <button className="heal" onClick={() => healPlayer(playerLife)} disabled={disableButons}>
               Curar
             </button>
             <button
               className="give-up"
               onClick={() => {
-                // alert("Fim de jogo");
                 toast("Fim de jogo!");
                 setTimeout(() => {
                   window.location.reload();
                 }, 2000);
+                setDisableButons(true);
               }}
+              disabled={disableButons}
             >
               Desistir
             </button>
