@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "styles/game.css";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const Game = () => {
   const enemyLifebarEl = useRef(null);
@@ -52,7 +52,9 @@ const Game = () => {
     if (playerLife <= 0) {
       playerLifebarEl.current.style.width = "0%";
       setPlayerLife(0);
-      alert("Você perdeu!");
+      toast.error("Você perdeu!", {
+        id: "lost",
+      });
     } else if (playerLife > 100) {
       playerLifebarEl.current.style.width = "100%";
       setPlayerLife(100);
@@ -67,12 +69,21 @@ const Game = () => {
       if (enemyLife <= 0) {
         enemyLifebarEl.current.style.width = "0%";
         setEnemyLife(0);
-        alert("Você venceu!");
+        toast.success("Você venceu!", {
+          id: "victory",
+        });
       } else {
         enemyLifebarEl.current.style.width = enemyLife + "%";
         setTimeout(() => {
           if (stun.current) {
-            alert("Inimigo está atordoado e não consegue atacar!");
+            toast("Inimigo está atordoado e não consegue atacar!", {
+              id: "stun",
+              icon: "✨",
+              style: {
+                background: "rgb(229, 238, 105)",
+              },
+              duration: 2000,
+            });
             stun.current = false;
           } else {
             //Attack
@@ -92,6 +103,22 @@ const Game = () => {
 
   return (
     <div>
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              background: "green",
+              color: "white",
+            },
+          },
+          error: {
+            style: {
+              background: "red",
+              color: "white",
+            },
+          },
+        }}
+      />
       <Navbar />
       <main className="game-container">
         <div className="enemy">
@@ -132,8 +159,11 @@ const Game = () => {
             <button
               className="give-up"
               onClick={() => {
-                alert("Fim de jogo");
-                window.location.reload();
+                // alert("Fim de jogo");
+                toast("Fim de jogo!");
+                setTimeout(() => {
+                  window.location.reload();
+                }, 2000);
               }}
             >
               Desistir
