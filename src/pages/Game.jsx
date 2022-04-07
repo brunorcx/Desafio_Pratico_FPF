@@ -192,7 +192,7 @@ const Game = () => {
       e.preventDefault();
       const Player = new FormData();
       Player.append("playerName", () => nome);
-      Player.append("data", new Date());
+      Player.append("date", new Date().toLocaleString());
       Player.append("score", score);
       toast.dismiss("score");
 

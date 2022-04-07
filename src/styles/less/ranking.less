@@ -1,0 +1,35 @@
+@import "colors.less";
+@import "mediaQuery.less";
+
+.ranking-container {
+  display: grid;
+  justify-items: center;
+  .ranking-card {
+    display: grid;
+    justify-items: center;
+    background: @background-card;
+    width: 80%;
+    margin: 1%;
+  }
+  h1 {
+    color: @font-color;
+    font-size: 2em;
+    text-align: center;
+  }
+  h2 {
+    color: @font-color;
+  }
+  .ranking-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100%;
+  }
+  .ranking-player {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    width: 100%;
+    color: @font-color;
+  }
+}

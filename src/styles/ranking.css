@@ -1,0 +1,32 @@
+.ranking-container {
+  display: grid;
+  justify-items: center;
+}
+.ranking-container .ranking-card {
+  display: grid;
+  justify-items: center;
+  background: #fff;
+  width: 80%;
+  margin: 1%;
+}
+.ranking-container h1 {
+  color: rgba(66, 74, 78, 0.8);
+  font-size: 2em;
+  text-align: center;
+}
+.ranking-container h2 {
+  color: rgba(66, 74, 78, 0.8);
+}
+.ranking-container .ranking-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+}
+.ranking-container .ranking-player {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  color: rgba(66, 74, 78, 0.8);
+}
