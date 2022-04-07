@@ -27,6 +27,7 @@ async function Get(url) {
     return response.data;
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
 
