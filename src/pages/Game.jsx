@@ -3,7 +3,7 @@ import "styles/game.css";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import toast, { Toaster } from "react-hot-toast";
-
+import { Post } from "helpers/HTTPMethods";
 const Game = () => {
   //General
   const turns = useRef(0);
@@ -188,54 +188,42 @@ const Game = () => {
     let score = Math.round((playerLife * 1000) / turns.current);
     if (giveUp === true) score = 0;
 
-    let Player = {
-      playerName: nome,
-      data: new Date().format("d-m-Y h:i:s"),
-      score: score,
-    };
+    function SaveRank(e) {
+      e.preventDefault();
+      const Player = new FormData();
+      Player.append("playerName", () => nome);
+      Player.append("data", new Date());
+      Player.append("score", score);
+      toast.dismiss("score");
+
+      toast.promise(Post("/ranking", Player), {
+        loading: "Carregando...",
+        success: "Salvo com sucesso!",
+        error: "Erro ao salvar!",
+      });
+    }
+
     //timestamp new Date().getTime();
 
-    //Save to Ranks
-    // useEffect(() => {
-    //   SaveToRanks(Player);
-    // }, [nome]);
-
     return (
-      <div className="score">
+      <form className="score" method="post" encType="multipart/form-data">
         <h1>Pontuação: {score}</h1>
         <input
           type="text"
           value={nome}
           onInput={(e) => setValue(e.target.value)}
-          maxlength="15"
+          maxLength="15"
           placeholder="Nome"
         ></input>
-        <button>Salvar</button>
-      </div>
+        <button type="submit" onClick={(e) => SaveRank(e)}>
+          Salvar
+        </button>
+      </form>
     );
   };
 
   return (
     <div>
-      <Toaster
-        toastOptions={{
-          success: {
-            style: {
-              background: "green",
-              color: "white",
-            },
-          },
-          error: {
-            style: {
-              background: "red",
-              color: "white",
-            },
-          },
-        }}
-        containerStyle={{
-          top: 200,
-        }}
-      />
       <Navbar />
       <main className="game-container">
         <div className="enemy">
@@ -297,6 +285,25 @@ const Game = () => {
         </div>
       </main>
       <Footer />
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              background: "green",
+              color: "white",
+            },
+          },
+          error: {
+            style: {
+              background: "red",
+              color: "white",
+            },
+          },
+        }}
+        containerStyle={{
+          top: 200,
+        }}
+      />
     </div>
   );
 };
