@@ -140,7 +140,7 @@ const Game = () => {
                 {playerLife}%
               </div>
             </div>
-            <img src="sprites/knight/knight2.gif" alt="jogador"></img>
+            <img src="sprites/knight/knight-idle.gif" alt="jogador"></img>
           </div>
           <div className="player-controls-container">
             <button className="attack" onClick={() => playerAttack(enemyLife)}>
