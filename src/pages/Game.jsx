@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import "styles/game.css";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
+import { Link } from "react-router-dom";
 
 const Game = () => {
   const enemyLifebarEl = useRef(null);
@@ -128,7 +129,15 @@ const Game = () => {
             <button className="heal" onClick={() => healPlayer(playerLife)}>
               Curar
             </button>
-            <button className="give-up">Desistir</button>
+            <button
+              className="give-up"
+              onClick={() => {
+                alert("Fim de jogo");
+                window.location.reload();
+              }}
+            >
+              Desistir
+            </button>
           </div>
         </div>
         <div className="game-log"></div>
