@@ -120,3 +120,23 @@
     }
   }
 }
+.score {
+  display: grid;
+  color: @font-color;
+  input {
+    color: @font-color-p;
+    margin-bottom: 2%;
+    font-size: 1.2rem;
+  }
+  button {
+    background: transparent;
+    transition: 0.3s;
+    font-size: 1.2rem;
+    &:hover {
+      color: white;
+      cursor: pointer;
+      background: @button-default;
+      transition: 0.3s;
+    }
+  }
+}

@@ -76,6 +76,10 @@ const Game = () => {
     if (playerLife <= 0) {
       playerLifebarEl.current.style.width = "0%";
       setPlayerLife(0);
+      toast(<CalculateScore giveUp={false} />, {
+        id: "score",
+        duration: Infinity,
+      });
       toast.error("Você perdeu!", {
         id: "lost",
       });
@@ -101,6 +105,10 @@ const Game = () => {
       if (enemyLife <= 0) {
         enemyLifebarEl.current.style.width = "0%";
         setEnemyLife(0);
+        toast(<CalculateScore giveUp={false} />, {
+          id: "score",
+          duration: Infinity,
+        });
         toast.success("Você venceu!", {
           id: "victory",
         });
@@ -145,16 +153,14 @@ const Game = () => {
     let enemyStyle = "";
     if (playerAttackType.current === "Ataque Básico") {
       playerStyle = Colors.attack;
-    }
-    if (playerAttackType.current === "Ataque Especial") {
+    } else if (playerAttackType.current === "Ataque Especial") {
       playerStyle = Colors.specialAttack;
     } else if (playerAttackType.current === "Curar") {
       playerStyle = Colors.heal;
     }
     if (enemyAttackType.current === "Ataque Básico") {
       enemyStyle = Colors.attack;
-    }
-    if (enemyAttackType.current === "Ataque Especial") {
+    } else if (enemyAttackType.current === "Ataque Especial") {
       enemyStyle = Colors.specialAttack;
     }
 
@@ -177,6 +183,38 @@ const Game = () => {
     );
   };
 
+  const CalculateScore = ({ giveUp }) => {
+    const [nome, setValue] = useState("");
+    let score = Math.round((playerLife * 1000) / turns.current);
+    if (giveUp === true) score = 0;
+
+    let Player = {
+      playerName: nome,
+      data: new Date().format("d-m-Y h:i:s"),
+      score: score,
+    };
+    //timestamp new Date().getTime();
+
+    //Save to Ranks
+    // useEffect(() => {
+    //   SaveToRanks(Player);
+    // }, [nome]);
+
+    return (
+      <div className="score">
+        <h1>Pontuação: {score}</h1>
+        <input
+          type="text"
+          value={nome}
+          onInput={(e) => setValue(e.target.value)}
+          maxlength="15"
+          placeholder="Nome"
+        ></input>
+        <button>Salvar</button>
+      </div>
+    );
+  };
+
   return (
     <div>
       <Toaster
@@ -193,6 +231,9 @@ const Game = () => {
               color: "white",
             },
           },
+        }}
+        containerStyle={{
+          top: 200,
         }}
       />
       <Navbar />
@@ -235,11 +276,15 @@ const Game = () => {
             <button
               className="give-up"
               onClick={() => {
+                toast(<CalculateScore giveUp={true} />, {
+                  id: "score",
+                  duration: Infinity,
+                });
                 toast("Fim de jogo!");
-                setTimeout(() => {
-                  window.location.reload();
-                }, 2000);
                 setDisableButons(true);
+                // setTimeout(() => {
+                //   window.location.reload();
+                // }, 2000);
               }}
               disabled={disableButons}
             >
