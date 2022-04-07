@@ -73,4 +73,49 @@
       width: 240px;
     }
   }
+  .game-log {
+    h1 {
+      color: @font-color;
+      font-size: 2em;
+      text-align: center;
+    }
+    h2 {
+      color: @font-color;
+      text-align: center;
+    }
+    p {
+      color: @font-color-p;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .card-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      .center-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        background: @background-card;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        width: 90%;
+        font-size: 1.5rem;
+        :nth-child(1) {
+          text-align: left;
+          margin: 0;
+          margin-bottom: 1%;
+          padding-left: 5%;
+          color: @font-white;
+        }
+        :nth-child(2) {
+          text-align: right;
+          margin: 0;
+          margin-bottom: 1%;
+          padding-right: 5%;
+          color: @font-white;
+        }
+      }
+    }
+  }
 }

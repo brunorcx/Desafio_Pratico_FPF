@@ -69,3 +69,46 @@
 .game-container .player img {
   width: 240px;
 }
+.game-container .game-log h1 {
+  color: rgba(66, 74, 78, 0.8);
+  font-size: 2em;
+  text-align: center;
+}
+.game-container .game-log h2 {
+  color: rgba(66, 74, 78, 0.8);
+  text-align: center;
+}
+.game-container .game-log p {
+  color: rgba(44, 49, 51, 0.932);
+  font-size: 1.2em;
+  text-align: center;
+}
+.game-container .game-log .card-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.game-container .game-log .card-container .center-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 90%;
+  font-size: 1.5rem;
+}
+.game-container .game-log .card-container .center-card :nth-child(1) {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 1%;
+  padding-left: 5%;
+  color: #fff;
+}
+.game-container .game-log .card-container .center-card :nth-child(2) {
+  text-align: right;
+  margin: 0;
+  margin-bottom: 1%;
+  padding-right: 5%;
+  color: #fff;
+}

@@ -5,25 +5,41 @@ import Footer from "components/Footer";
 import toast, { Toaster } from "react-hot-toast";
 
 const Game = () => {
-  const enemyLifebarEl = useRef(null);
-  const playerLifebarEl = useRef(null);
+  //General
   const turns = useRef(0);
-  const stun = useRef(false);
-  const wait2Turns = useRef(0);
-  const [enemyLife, setEnemyLife] = useState(100);
+  const Colors = {
+    attack: "rgba(238, 105, 105, 0.7)",
+    specialAttack: "rgba(229, 238, 105, 1)",
+    heal: "rgba(105, 238, 105, 0.7)",
+    giveUp: "rgba(105, 105, 238, 0.7)",
+  };
+  //Player behavior
+  const playerLifebarEl = useRef(null);
   const [playerLife, setPlayerLife] = useState(100);
+  const playerAttackType = useRef("");
   const [disableButon, setDisableButon] = useState(false);
+  const wait2Turns = useRef(0);
+  const playerDamage = useRef(0);
+  //Enemy behavior
+  const enemyLifebarEl = useRef(null);
+  const [enemyLife, setEnemyLife] = useState(100);
+  const enemyAttackType = useRef("");
+  const enemyDamage = useRef(0);
+  const stun = useRef(false);
 
   //Player actions
   function playerAttack(enemyLife) {
     setTimeout(() => {
-      setEnemyLife(enemyLife - Math.floor(Math.random() * (10 - 5 + 1) + 5));
+      playerDamage.current = Math.floor(Math.random() * (10 - 5 + 1) + 5);
+      setEnemyLife(enemyLife - playerDamage.current);
       turns.current++;
+      playerAttackType.current = "Ataque Básico";
     }, 500);
   }
   function playerSpecialAttack(enemyLife) {
     setTimeout(() => {
-      setEnemyLife(enemyLife - Math.floor(Math.random() * (20 - 10 + 1) + 10));
+      playerDamage.current = Math.floor(Math.random() * (20 - 10 + 1) + 10);
+      setEnemyLife(enemyLife - playerDamage.current);
       //50% chance to stun
       if (Math.floor(Math.random() * 2) === 0) {
         stun.current = true;
@@ -31,23 +47,30 @@ const Game = () => {
       setDisableButon(true);
       turns.current++;
       wait2Turns.current = turns.current;
+      playerAttackType.current = "Ataque Especial";
     }, 500);
   }
   function healPlayer(playerLife) {
     setTimeout(() => {
-      setPlayerLife(playerLife + Math.floor(Math.random() * (15 - 5 + 1) + 5));
+      playerDamage.current = Math.floor(Math.random() * (15 - 5 + 1) + 5);
+      setPlayerLife(playerLife + playerDamage.current);
       turns.current++;
+      playerAttackType.current = "Curar";
     }, 500);
   }
   //Enemy actions
   function enemyAttack(playerLife) {
-    setPlayerLife(playerLife - Math.floor(Math.random() * (12 - 6 + 1) + 6));
+    enemyDamage.current = Math.floor(Math.random() * (12 - 6 + 1) + 6);
+    setPlayerLife(playerLife - enemyDamage.current);
+    enemyAttackType.current = "Ataque Básico";
   }
   function enemySpecialAttack(playerLife) {
-    setPlayerLife(playerLife - Math.floor(Math.random() * (16 - 8 + 1) + 8));
+    enemyDamage.current = Math.floor(Math.random() * (16 - 8 + 1) + 8);
+    setPlayerLife(playerLife - enemyDamage.current);
+    enemyAttackType.current = "Ataque Especial";
   }
 
-  //Player actions
+  //Player effect
   useEffect(() => {
     if (playerLife <= 0) {
       playerLifebarEl.current.style.width = "0%";
@@ -60,15 +83,17 @@ const Game = () => {
       setPlayerLife(100);
     } else {
       if (playerLife < 20) {
-        playerLifebarEl.current.style.background = "rgba(238, 105, 105, 0.7)";
-      } else if (playerLife < 50) {
-        playerLifebarEl.current.style.background = "rgba(229, 238, 105, 0.7)";
+        playerLifebarEl.current.style.background = Colors.attack;
+      } else if (playerLife < 50 && playerLife > 20) {
+        playerLifebarEl.current.style.background = Colors.specialAttack;
+      } else if (playerLife >= 50) {
+        playerLifebarEl.current.style.background = Colors.heal;
       }
       playerLifebarEl.current.style.width = playerLife + "%";
     }
   }, [playerLife]);
 
-  //Enemy actions
+  //Enemy effect
   useEffect(() => {
     if (turns.current > 0) {
       if (enemyLife <= 0) {
@@ -79,9 +104,9 @@ const Game = () => {
         });
       } else {
         if (enemyLife < 20) {
-          enemyLifebarEl.current.style.background = "rgba(238, 105, 105, 0.7)";
+          enemyLifebarEl.current.style.background = Colors.attack;
         } else if (enemyLife < 50) {
-          enemyLifebarEl.current.style.background = "rgba(229, 238, 105, 0.7)";
+          enemyLifebarEl.current.style.background = Colors.specialAttack;
         }
         enemyLifebarEl.current.style.width = enemyLife + "%";
         setTimeout(() => {
@@ -90,7 +115,7 @@ const Game = () => {
               id: "stun",
               icon: "✨",
               style: {
-                background: "rgb(229, 238, 105)",
+                background: Colors.specialAttack,
               },
               duration: 2000,
             });
@@ -110,6 +135,44 @@ const Game = () => {
       }
     }
   }, [enemyLife, turns.current]);
+
+  const LogTurn = (turn) => {
+    //create empty object
+    let playerStyle = "";
+    let enemyStyle = "";
+    if (playerAttackType.current === "Ataque Básico") {
+      playerStyle = Colors.attack;
+    }
+    if (playerAttackType.current === "Ataque Especial") {
+      playerStyle = Colors.specialAttack;
+    } else if (playerAttackType.current === "Curar") {
+      playerStyle = Colors.heal;
+    }
+    if (enemyAttackType.current === "Ataque Básico") {
+      enemyStyle = Colors.attack;
+    }
+    if (enemyAttackType.current === "Ataque Especial") {
+      enemyStyle = Colors.specialAttack;
+    }
+
+    return (
+      <div className="turns">
+        <h1>Log</h1>
+        <h2>Turno: {turns.current}</h2>
+        <div className="card-container">
+          <div className="center-card">
+            <p style={{ background: playerStyle }}>
+              Jogador usou "{playerAttackType.current}" ({playerAttackType.current === "Curar" ? "+" : "-"}
+              {playerDamage.current} pontos de vida)
+            </p>
+            <p style={{ background: enemyStyle }}>
+              Inimigo usou "{enemyAttackType.current}" (-{enemyDamage.current} pontos de vida)
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -181,9 +244,7 @@ const Game = () => {
           </div>
         </div>
         <div className="game-log">
-          <div className="turns">
-            <span>Turno: {turns.current}</span>
-          </div>
+          <LogTurn />
         </div>
       </main>
       <Footer />
