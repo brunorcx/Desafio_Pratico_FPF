@@ -170,7 +170,9 @@ const Game = () => {
             </button>
           </div>
         </div>
-        <div className="game-log"></div>
+        <div className="game-log">
+          <div className="turns"></div>
+        </div>
       </main>
       <Footer />
     </div>
