@@ -113,3 +113,23 @@
   padding-right: 5%;
   color: #fff;
 }
+.score {
+  display: grid;
+  color: rgba(66, 74, 78, 0.8);
+}
+.score input {
+  color: rgba(44, 49, 51, 0.932);
+  margin-bottom: 2%;
+  font-size: 1.2rem;
+}
+.score button {
+  background: transparent;
+  transition: 0.3s;
+  font-size: 1.2rem;
+}
+.score button:hover {
+  color: white;
+  cursor: pointer;
+  background: #424a4e;
+  transition: 0.3s;
+}
