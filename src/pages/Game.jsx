@@ -59,6 +59,11 @@ const Game = () => {
       playerLifebarEl.current.style.width = "100%";
       setPlayerLife(100);
     } else {
+      if (playerLife < 20) {
+        playerLifebarEl.current.style.background = "rgba(238, 105, 105, 0.7)";
+      } else if (playerLife < 50) {
+        playerLifebarEl.current.style.background = "rgba(229, 238, 105, 0.7)";
+      }
       playerLifebarEl.current.style.width = playerLife + "%";
     }
   }, [playerLife]);
@@ -73,6 +78,11 @@ const Game = () => {
           id: "victory",
         });
       } else {
+        if (enemyLife < 20) {
+          enemyLifebarEl.current.style.background = "rgba(238, 105, 105, 0.7)";
+        } else if (enemyLife < 50) {
+          enemyLifebarEl.current.style.background = "rgba(229, 238, 105, 0.7)";
+        }
         enemyLifebarEl.current.style.width = enemyLife + "%";
         setTimeout(() => {
           if (stun.current) {

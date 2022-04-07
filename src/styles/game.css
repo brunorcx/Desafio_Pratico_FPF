@@ -11,7 +11,7 @@
   color: #fff;
   text-align: center;
   width: 100%;
-  background: coral;
+  background: rgba(105, 238, 105, 0.7);
 }
 .game-container .enemy {
   display: grid;
@@ -34,7 +34,7 @@
   margin-bottom: 0%;
 }
 .game-container .player .player-info .lifebar-container .lifebar-progress {
-  background: #0a49be;
+  background: rgba(105, 238, 105, 0.7);
 }
 .game-container .player .player-controls-container {
   width: 100%;
