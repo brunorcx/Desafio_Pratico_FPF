@@ -27,7 +27,7 @@ const Footer = (props) => {
               <p className="menu__link">Sobre</p>
             </li>
             <li className="menu__item" onClick={() => props.setNavbarClick("Planos")}>
-              <p className="menu__link">Planos</p>
+              <p className="menu__link">Jogos</p>
             </li>
             <li className="menu__item" onClick={() => props.setNavbarClick("Modelos")}>
               <p className="menu__link">Modelos</p>
@@ -36,7 +36,6 @@ const Footer = (props) => {
               <p className="menu__link">Contato</p>
             </li>
           </ul>
-          <p>&copy;Sistema de Busca Acessível</p>
         </div>
       </div>
     </footer>
