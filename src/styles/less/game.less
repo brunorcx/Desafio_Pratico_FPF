@@ -3,6 +3,10 @@
 
 .game-container {
   border: 1px solid @boder-black;
+  .background-image {
+    background-image: url("/public/backgrounds/background_glacial_mountains.png");
+    background-size: 100% 100%;
+  }
   .lifebar-container {
     width: 200px;
     border: 1px solid @boder-black;
@@ -19,6 +23,8 @@
     display: grid;
     justify-items: end;
     margin-right: 2%;
+    padding: 0 4%;
+
     img {
       transform: scaleX(-1);
     }
@@ -27,6 +33,7 @@
     display: grid;
     justify-items: start;
     grid-template-columns: 0.3fr 0.7fr;
+    padding: 0 4%;
     .player-info {
       display: grid;
       justify-items: center;

@@ -6,7 +6,12 @@ import toast, { Toaster } from "react-hot-toast";
 import { Post } from "helpers/HTTPMethods";
 const Game = () => {
   //General
+
+  const [gameStyle, setGameStyle] = useState({
+    backgroundImage: "url(" + "backgrounds/background_glacial_mountains.png" + ")",
+  });
   const turns = useRef(0);
+
   const Colors = {
     attack: "rgba(238, 105, 105, 0.7)",
     specialAttack: "rgba(229, 238, 105, 1)",
@@ -71,6 +76,26 @@ const Game = () => {
     enemyAttackType.current = "Ataque Especial";
   }
 
+  useEffect(() => {
+    let randomNumber = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+    if (randomNumber === 1) {
+      setGameStyle({
+        backgroundImage: "url(" + "backgrounds/background_glacial_mountains.png" + ")",
+      });
+    } else if (randomNumber === 2) {
+      setGameStyle({
+        backgroundImage: "url(" + "backgrounds/alpine-dry.png" + ")",
+      });
+    } else if (randomNumber === 3) {
+      setGameStyle({
+        backgroundImage: "url(" + "backgrounds/desert-dry.png" + ")",
+      });
+    } else if (randomNumber === 4) {
+      setGameStyle({
+        backgroundImage: "url(" + "backgrounds/rocky-dry.png" + ")",
+      });
+    }
+  }, []);
   //Player effect
   useEffect(() => {
     if (playerLife <= 0) {
@@ -226,58 +251,60 @@ const Game = () => {
     <div>
       <Navbar />
       <main className="game-container">
-        <div className="enemy">
-          <div className="lifebar-container">
-            <div className="lifebar-progress" ref={enemyLifebarEl}>
-              {enemyLife}%
-            </div>
-          </div>
-          <img
-            src="sprites/dorver/dorver.gif"
-            alt="monstro de quatro patas inimigo"
-            title="Manveru, Dorimen at https://opengameart.org/content/dorver-monster"
-          ></img>
-        </div>
-        <div className="player">
-          <div className="player-info">
+        <div className="background-image" style={gameStyle}>
+          <div className="enemy">
             <div className="lifebar-container">
-              <div className="lifebar-progress" ref={playerLifebarEl}>
-                {playerLife}%
+              <div className="lifebar-progress" ref={enemyLifebarEl}>
+                {enemyLife}%
               </div>
             </div>
-            <img src="sprites/knight/knight-idle.gif" alt="jogador"></img>
+            <img
+              src="sprites/dorver/dorver.gif"
+              alt="monstro de quatro patas inimigo"
+              title="Manveru, Dorimen at https://opengameart.org/content/dorver-monster"
+            ></img>
           </div>
-          <div className="player-controls-container">
-            <button className="attack" onClick={() => playerAttack(enemyLife)} disabled={disableButons}>
-              Atacar
-            </button>
-            <button
-              className="special-attack"
-              onClick={() => playerSpecialAttack(enemyLife)}
-              disabled={disableButons ? disableButons : disableSpecialAttack}
-            >
-              Ataque Especial
-            </button>
-            <button className="heal" onClick={() => healPlayer(playerLife)} disabled={disableButons}>
-              Curar
-            </button>
-            <button
-              className="give-up"
-              onClick={() => {
-                toast(<CalculateScore giveUp={true} />, {
-                  id: "score",
-                  duration: Infinity,
-                });
-                toast("Fim de jogo!");
-                setDisableButons(true);
-                // setTimeout(() => {
-                //   window.location.reload();
-                // }, 2000);
-              }}
-              disabled={disableButons}
-            >
-              Desistir
-            </button>
+          <div className="player">
+            <div className="player-info">
+              <div className="lifebar-container">
+                <div className="lifebar-progress" ref={playerLifebarEl}>
+                  {playerLife}%
+                </div>
+              </div>
+              <img src="sprites/knight/knight-idle.gif" alt="jogador"></img>
+            </div>
+            <div className="player-controls-container">
+              <button className="attack" onClick={() => playerAttack(enemyLife)} disabled={disableButons}>
+                Atacar
+              </button>
+              <button
+                className="special-attack"
+                onClick={() => playerSpecialAttack(enemyLife)}
+                disabled={disableButons ? disableButons : disableSpecialAttack}
+              >
+                Ataque Especial
+              </button>
+              <button className="heal" onClick={() => healPlayer(playerLife)} disabled={disableButons}>
+                Curar
+              </button>
+              <button
+                className="give-up"
+                onClick={() => {
+                  toast(<CalculateScore giveUp={true} />, {
+                    id: "score",
+                    duration: Infinity,
+                  });
+                  toast("Fim de jogo!");
+                  setDisableButons(true);
+                  // setTimeout(() => {
+                  //   window.location.reload();
+                  // }, 2000);
+                }}
+                disabled={disableButons}
+              >
+                Desistir
+              </button>
+            </div>
           </div>
         </div>
         <div className="game-log">
