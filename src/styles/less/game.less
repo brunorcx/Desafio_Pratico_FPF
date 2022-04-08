@@ -155,3 +155,25 @@
     }
   }
 }
+
+@media @phone {
+  .sideMenu {
+    z-index: 1;
+    display: block;
+    transform: translateX(100vw);
+    transition: 1s;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
+  .openSideMenu {
+    z-index: 1;
+    display: block;
+    transform: translateX(0vw);
+    transition: 1s;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background: @background-navbar2;
+  }
+}

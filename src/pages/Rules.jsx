@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "styles/rules.css";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
+import NavbarMobile from "components/NavbarMobile";
 
 const Rules = () => {
+  const [openSideMenu, setOpenSideMenu] = useState(false);
+
   return (
     <div>
-      <Navbar />
+      <Navbar openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} />
+      <div className={openSideMenu ? "openSideMenu" : "sideMenu"}>
+        <NavbarMobile />
+      </div>
       <main className="rules-container">
         <h1>Regras do Jogo</h1>
         <p>Preste atenção nas regras para conseguir uma boa pontuação!</p>

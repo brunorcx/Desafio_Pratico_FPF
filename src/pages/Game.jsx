@@ -4,9 +4,11 @@ import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import toast, { Toaster } from "react-hot-toast";
 import { Post } from "helpers/HTTPMethods";
+import NavbarMobile from "components/NavbarMobile";
+
 const Game = () => {
   //General
-
+  const [openSideMenu, setOpenSideMenu] = useState(false);
   const [gameStyle, setGameStyle] = useState({
     backgroundImage: "url(" + "backgrounds/background_glacial_mountains.png" + ")",
   });
@@ -252,7 +254,10 @@ const Game = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} />
+      <div className={openSideMenu ? "openSideMenu" : "sideMenu"}>
+        <NavbarMobile />
+      </div>
       <main className="game-container">
         <div className="background-image" style={gameStyle}>
           <div className="enemy">

@@ -3,6 +3,7 @@ import "styles/ranking.css";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import { Get } from "helpers/HTTPMethods";
+import NavbarMobile from "components/NavbarMobile";
 
 const Ranking = () => {
   //initialize state with dummy data
@@ -26,6 +27,7 @@ const Ranking = () => {
 
   //sort dummy by score descending
   const [ranking, setRanking] = useState([]);
+  const [openSideMenu, setOpenSideMenu] = useState(false);
 
   useEffect(() => {
     Get("/ranking")
@@ -39,7 +41,10 @@ const Ranking = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} />
+      <div className={openSideMenu ? "openSideMenu" : "sideMenu"}>
+        <NavbarMobile />
+      </div>
       <main className="ranking-container">
         <h1>Ranking</h1>
         <div className="ranking-card">
