@@ -1,6 +1,10 @@
 .game-container {
   border: 1px solid #000;
 }
+.game-container .background-image {
+  background-image: url("/public/backgrounds/background_glacial_mountains.png");
+  background-size: 100% 100%;
+}
 .game-container .lifebar-container {
   width: 200px;
   border: 1px solid #000;
@@ -17,6 +21,7 @@
   display: grid;
   justify-items: end;
   margin-right: 2%;
+  padding: 0 4%;
 }
 .game-container .enemy img {
   transform: scaleX(-1);
@@ -25,6 +30,7 @@
   display: grid;
   justify-items: start;
   grid-template-columns: 0.3fr 0.7fr;
+  padding: 0 4%;
 }
 .game-container .player .player-info {
   display: grid;
@@ -66,8 +72,20 @@
 .game-container .player .player-controls-container :nth-child(4) {
   background: rgba(105, 105, 238, 0.7);
 }
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .game-container .player .player-controls-container {
+    grid-template-columns: 1fr 1fr;
+    height: 10rem;
+    margin-top: 2%;
+  }
+}
 .game-container .player img {
   width: 240px;
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .game-container .player {
+    grid-template-columns: 1fr;
+  }
 }
 .game-container .game-log h1 {
   color: rgba(66, 74, 78, 0.8);
