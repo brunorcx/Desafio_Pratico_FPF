@@ -109,6 +109,9 @@ const Game = () => {
         id: "lost",
       });
       setDisableButons(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2500);
     } else if (playerLife > 100) {
       playerLifebarEl.current.style.width = "100%";
       setPlayerLife(100);
