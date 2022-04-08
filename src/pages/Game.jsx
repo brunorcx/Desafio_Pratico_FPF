@@ -296,9 +296,9 @@ const Game = () => {
                   });
                   toast("Fim de jogo!");
                   setDisableButons(true);
-                  // setTimeout(() => {
-                  //   window.location.reload();
-                  // }, 2000);
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
                 }}
                 disabled={disableButons}
               >
