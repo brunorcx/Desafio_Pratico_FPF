@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.NEXT_STATIC_BASE_URL || "http://localhost:3030/";
+const baseUrl = process.env.NEXT_STATIC_BASE_URL || "http://localhost:3030";
 // const baseUrlOnline = process.env.NEXT_STATIC_BASE_URL || "https://link.herokuapp.com";
 async function Post(url, data) {
   try {

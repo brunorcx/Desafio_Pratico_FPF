@@ -25,12 +25,12 @@ const Ranking = () => {
   ];
 
   //sort dummy by score descending
-  const [ranking, setRanking] = useState(dummy.sort((a, b) => b.score - a.score));
+  const [ranking, setRanking] = useState([]);
 
   useEffect(() => {
-    Get("ranking/")
+    Get("/ranking")
       .then((result) => {
-        setRanking(result);
+        setRanking(result.sort((a, b) => b.score - a.score));
       })
       .catch((err) => {
         setRanking(dummy);

@@ -188,10 +188,10 @@ const Game = () => {
     let score = Math.round((playerLife * 1000) / turns.current);
     if (giveUp === true) score = 0;
 
-    function SaveRank(e) {
+    async function SaveRank(e) {
       e.preventDefault();
       const Player = new FormData();
-      Player.append("playerName", () => nome);
+      Player.append("playerName", nome);
       Player.append("date", new Date().toLocaleString());
       Player.append("score", score);
       toast.dismiss("score");
