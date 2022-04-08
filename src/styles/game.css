@@ -101,6 +101,11 @@
   font-size: 1.2em;
   text-align: center;
 }
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .game-container .game-log p {
+    font-size: 0.9em;
+  }
+}
 .game-container .game-log .card-container {
   display: flex;
   width: 100%;
