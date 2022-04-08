@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "styles/home.css";
 import Navbar from "components/Navbar";
+import NavbarMobile from "components/NavbarMobile";
 import Footer from "components/Footer";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,9 @@ const Home = () => {
   return (
     <div className="total-home">
       <Navbar openSideMenu={openSideMenu} setOpenSideMenu={setOpenSideMenu} />
-      <div className={openSideMenu ? "openSideMenu" : "sideMenu"}>AAAAAAAAAAAAA</div>
+      <div className={openSideMenu ? "openSideMenu" : "sideMenu"}>
+        <NavbarMobile />
+      </div>
       <main className="home-container">
         <img src="home.jpg" alt="imagem de armadura de cavaleiro" title="Photo by Nik Shuliahin on Unsplash"></img>
         <h1>Bem-vindo ao Jogo Batalha Única</h1>

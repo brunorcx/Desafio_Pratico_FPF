@@ -57,16 +57,16 @@
     white-space: inherit;
   }
 }
-.total-home > div {
+.total-home .intro {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.total-home > div h2 {
+.total-home .intro h2 {
   color: rgba(66, 74, 78, 0.8);
 }
-.total-home > div a {
+.total-home .intro a {
   text-decoration: none;
   color: #424a4e;
   background: transparent;
@@ -78,7 +78,7 @@
   border: solid 1px #424a4e;
   transition: 0.3s;
 }
-.total-home > div a:hover {
+.total-home .intro a:hover {
   color: white;
   background: #424a4e;
   transition: 0.3s;
@@ -90,7 +90,6 @@
   }
   .total-home .sideMenu {
     z-index: 1;
-    background: blue;
     display: block;
     transform: translateX(100vw);
     transition: 1s;
@@ -101,11 +100,11 @@
   .total-home .openSideMenu {
     z-index: 1;
     display: block;
-    background: red;
     transform: translateX(0vw);
     transition: 1s;
     height: 100vh;
     width: 100vw;
     position: fixed;
+    background: rgba(0, 0, 0, 0.5);
   }
 }

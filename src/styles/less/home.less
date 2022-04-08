@@ -49,7 +49,7 @@
       white-space: inherit;
     }
   }
-  > div {
+  .intro {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +80,6 @@
     grid-template-columns: 0 100%;
     .sideMenu {
       z-index: 1;
-      background: blue;
       display: block;
       transform: translateX(100vw);
       transition: 1s;
@@ -91,12 +90,12 @@
     .openSideMenu {
       z-index: 1;
       display: block;
-      background: red;
       transform: translateX(0vw);
       transition: 1s;
       height: 100vh;
       width: 100vw;
       position: fixed;
+      background: @background-navbar2;
     }
   }
 }

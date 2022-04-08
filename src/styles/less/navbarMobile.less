@@ -1,0 +1,28 @@
+@import "colors.less";
+@import "mediaQuery.less";
+
+.nav-mobile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+
+  menu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style-type: none;
+    align-items: center;
+    padding: 0;
+    li {
+      white-space: nowrap;
+      a {
+        text-decoration: none;
+        border: none;
+        color: white;
+      }
+    }
+  }
+}
