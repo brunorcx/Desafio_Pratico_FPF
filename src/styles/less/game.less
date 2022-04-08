@@ -24,6 +24,8 @@
     justify-items: end;
     margin-right: 2%;
     padding: 0 4%;
+    animation-duration: 3s;
+    animation-name: slideinright;
 
     img {
       transform: scaleX(-1);
@@ -34,6 +36,9 @@
     justify-items: start;
     grid-template-columns: 0.3fr 0.7fr;
     padding: 0 4%;
+    animation-duration: 3s;
+    animation-name: slideinleft;
+
     .player-info {
       display: grid;
       justify-items: center;
@@ -178,5 +183,24 @@
     width: 100vw;
     position: fixed;
     background: @background-navbar2;
+  }
+}
+
+@keyframes slideinleft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideinright {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
