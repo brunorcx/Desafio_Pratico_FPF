@@ -3,6 +3,9 @@
   font-size: 1.2em;
   text-align: center;
 }
+.total-home .sideMenu {
+  display: none;
+}
 .total-home .home-container {
   color: #fff;
   position: relative;
@@ -80,4 +83,29 @@
   background: #424a4e;
   transition: 0.3s;
   cursor: pointer;
+}
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .total-home {
+    grid-template-columns: 0 100%;
+  }
+  .total-home .sideMenu {
+    z-index: 1;
+    background: blue;
+    display: block;
+    transform: translateX(100vw);
+    transition: 1s;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
+  .total-home .openSideMenu {
+    z-index: 1;
+    display: block;
+    background: red;
+    transform: translateX(0vw);
+    transition: 1s;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
 }
