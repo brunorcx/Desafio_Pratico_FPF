@@ -11,6 +11,9 @@
     color: @font-color-p;
     font-size: 1.2em;
     text-align: center;
+    @media @phone {
+      padding: 0 2%;
+    }
   }
   .card-container {
     display: grid;
@@ -66,8 +69,10 @@
       background: @player-give-up;
     }
     @media @phone {
-      grid-template-columns: 1fr;
-      gap: 2%;
+      display: block;
+      > * {
+        margin-bottom: 2%;
+      }
     }
   }
 }

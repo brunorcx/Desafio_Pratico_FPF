@@ -8,6 +8,11 @@
   font-size: 1.2em;
   text-align: center;
 }
+@media only screen and (min-width: 320px) and (max-width: 601px) {
+  .rules-container p {
+    padding: 0 2%;
+  }
+}
 .rules-container .card-container {
   display: grid;
   justify-content: center;
@@ -62,7 +67,9 @@
 }
 @media only screen and (min-width: 320px) and (max-width: 601px) {
   .rules-container .actions-4-container {
-    grid-template-columns: 1fr;
-    gap: 2%;
+    display: block;
+  }
+  .rules-container .actions-4-container > * {
+    margin-bottom: 2%;
   }
 }
