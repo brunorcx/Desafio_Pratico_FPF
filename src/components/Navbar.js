@@ -1,6 +1,8 @@
 import "styles/navbar.css";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import toast, { Toaster } from "react-hot-toast";
+
 const Navbar = ({ openSideMenu, setOpenSideMenu }) => {
   return (
     <header className="App-header">

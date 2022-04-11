@@ -21,7 +21,6 @@ async function Post(url, data) {
 async function Get(url) {
   try {
     let response = await axios.get(baseUrl + url);
-    // console.log(response.data);
     return response.data;
   } catch (e) {
     console.error(e);

@@ -10,7 +10,7 @@ const Game = () => {
   //General
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const [gameStyle, setGameStyle] = useState({
-    backgroundImage: "url(" + "backgrounds/background_glacial_mountains.png" + ")",
+    backgroundImage: "url(backgrounds/background_glacial_mountains.png)",
   });
   const turns = useRef(0);
 
@@ -82,21 +82,23 @@ const Game = () => {
     let randomNumber = Math.floor(Math.random() * (4 - 1 + 1) + 1);
     if (randomNumber === 1) {
       setGameStyle({
-        backgroundImage: "url(" + "backgrounds/background_glacial_mountains.png" + ")",
+        backgroundImage: "url(backgrounds/background_glacial_mountains.png)",
       });
     } else if (randomNumber === 2) {
       setGameStyle({
-        backgroundImage: "url(" + "backgrounds/alpine-dry.png" + ")",
+        backgroundImage: "url(backgrounds/alpine-dry.png)",
       });
     } else if (randomNumber === 3) {
       setGameStyle({
-        backgroundImage: "url(" + "backgrounds/desert-dry.png" + ")",
+        backgroundImage: "url(backgrounds/desert-dry.png)",
       });
     } else if (randomNumber === 4) {
       setGameStyle({
-        backgroundImage: "url(" + "backgrounds/rocky-dry.png" + ")",
+        backgroundImage: "url(backgrounds/rocky-dry.png)",
       });
     }
+    //clear all toast on page load
+    toast.dismiss();
   }, []);
   //Player effect
   useEffect(() => {
@@ -238,16 +240,22 @@ const Game = () => {
     return (
       <form className="score" method="post" encType="multipart/form-data">
         <h1>Pontuação: {score}</h1>
-        <input
-          type="text"
-          value={nome}
-          onInput={(e) => setValue(e.target.value)}
-          maxLength="15"
-          placeholder="Nome"
-        ></input>
-        <button type="submit" onClick={(e) => SaveRank(e)}>
-          Salvar
-        </button>
+        {score <= 0 && <p style={{ textAlign: "center" }}> Carregando...</p>}
+        {score > 0 && (
+          <>
+            <input
+              type="text"
+              value={nome}
+              onInput={(e) => setValue(e.target.value)}
+              maxLength="15"
+              placeholder="Nome"
+            ></input>
+
+            <button type="submit" onClick={(e) => SaveRank(e)}>
+              Salvar
+            </button>
+          </>
+        )}
       </form>
     );
   };
