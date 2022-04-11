@@ -23,16 +23,16 @@ const Footer = (props) => {
             </li>
           </ul>
           <ul className="menu">
-            <li className="menu__item" onClick={() => props.setNavbarClick("Sobre")}>
+            <li className="menu__item">
               <p className="menu__link">Sobre</p>
             </li>
-            <li className="menu__item" onClick={() => props.setNavbarClick("Planos")}>
+            <li className="menu__item">
               <p className="menu__link">Jogos</p>
             </li>
-            <li className="menu__item" onClick={() => props.setNavbarClick("Modelos")}>
+            <li className="menu__item">
               <p className="menu__link">Modelos</p>
             </li>
-            <li className="menu__item" onClick={() => props.setNavbarClick("Contatos")}>
+            <li className="menu__item">
               <p className="menu__link">Contato</p>
             </li>
           </ul>
