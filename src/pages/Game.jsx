@@ -222,17 +222,23 @@ const Game = () => {
 
     async function SaveRank(e) {
       e.preventDefault();
-      const Player = new FormData();
-      Player.append("playerName", nome);
-      Player.append("date", new Date().toLocaleString());
-      Player.append("score", score);
-      toast.dismiss("score");
+      if (nome === "") {
+        toast.error("Você precisa digitar um nome!", {
+          id: "name",
+        });
+      } else {
+        const Player = new FormData();
+        Player.append("playerName", nome);
+        Player.append("date", new Date().toLocaleString());
+        Player.append("score", score);
+        toast.dismiss("score");
 
-      toast.promise(Post("/ranking", Player), {
-        loading: "Carregando...",
-        success: "Salvo com sucesso!",
-        error: "Erro ao salvar!",
-      });
+        toast.promise(Post("/ranking", Player), {
+          loading: "Carregando...",
+          success: "Salvo com sucesso!",
+          error: "Erro ao salvar!",
+        });
+      }
     }
 
     //timestamp new Date().getTime();
